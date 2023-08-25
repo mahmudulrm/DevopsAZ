@@ -2,7 +2,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-// Create EC2
+# Create EC2
 resource "aws_instance" "web" {
   ami = var.os
   key_name = "terraform_key" 
@@ -14,7 +14,7 @@ resource "aws_instance" "web" {
   }
 }
 
-// Create VPC
+# Create VPC
 resource "aws_vpc" "demo-vpc" {
   cidr_block = var.vpc_cidr_block
 
@@ -23,7 +23,7 @@ resource "aws_vpc" "demo-vpc" {
   }
 }
 
-// Create Subnet 1
+# Create Subnet 1
 
 resource "aws_subnet" "demo-subnet-1" {
   vpc_id = aws_vpc.demo-vpc.id
