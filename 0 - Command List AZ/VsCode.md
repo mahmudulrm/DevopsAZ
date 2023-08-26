@@ -2,6 +2,7 @@
 
 1. Remote - SSH (Instaall)
 
+
 2. Create key:  windows. 
 
 	ssh-keygen -t rsa
