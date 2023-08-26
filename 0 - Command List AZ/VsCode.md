@@ -18,7 +18,6 @@
 	
 	copy and paste (id_rsa.pub)
 	
-	
 go to Remote - SSH	 +  add 
 
 ssh -i ~/.ssh/id_rsa root@192.168.71.241
