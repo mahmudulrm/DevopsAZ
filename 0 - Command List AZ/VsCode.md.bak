@@ -25,12 +25,15 @@ ssh -i ~/.ssh/id_rsa root@192.168.71.241
 
 
 Config file  like: 
-```bash
+
 	Host 192.168.71.185
+	
 		User root
+		
 		HostName 192.168.71.185
+		
 		IdentityFile ~/.ssh/id_rsa
-```		
+		
 
 --------------
 	
