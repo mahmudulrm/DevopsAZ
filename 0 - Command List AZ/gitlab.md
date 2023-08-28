@@ -65,3 +65,6 @@ logout_job:
     - docker
   script:
     - docker logout $CI_REGISTRY
+	
+	
+==
