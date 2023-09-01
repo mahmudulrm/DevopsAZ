@@ -26,5 +26,24 @@ def scope_check(number_of_days):
     print(number_of_days)
     print(my_var)
 
-
 scope_check(20)
+
+#user input //string 
+
+##user_input = input("Enter number of days \n")
+##print(user_input)
+
+# Fuction return
+
+def return_check(number_of_days):
+    return f"your input is {number_of_days}"
+
+my_var_return = return_check(5)
+
+print(my_var_return)
+
+#casting data type
+
+user_input = input("Enter number of days \n")
+user_input_number = int(user_input)
+print(user_input_number)
