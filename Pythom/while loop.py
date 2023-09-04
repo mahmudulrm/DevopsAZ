@@ -1,4 +1,4 @@
-#Try case
+#While Loop
 calculattion_to_minutes = 24 * 60
 name_of_unit = "minutes"
 
@@ -18,6 +18,6 @@ def validation_and_execute():
     except ValueError:
         print("Your inpurt is not valid number. Don't ruin my program")
 
-
-user_input = input("Hay user, enter a number of days and I will convert it to minutus \n")
-validation_and_execute()
+while True:
+    user_input = input("Hay user, enter a number of days and I will convert it to minutus \n")
+    validation_and_execute()
