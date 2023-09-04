@@ -8,6 +8,9 @@ def days_to_units(number_of_days):
     else:
         return "you enter a negative value, so no conversion for you!"
 
+
 user_input = input("Enter number of days \n")
 user_input_number = int(user_input)
-print(user_input_number)
+
+calculation_value = days_to_units(user_input_number)
+print(calculation_value)
