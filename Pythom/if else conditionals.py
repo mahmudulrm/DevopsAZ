@@ -18,11 +18,12 @@ def days_to_units(number_of_days):
 
 
 user_input = input("Enter number of days \n")
-user_input_number = int(user_input)
-
-calculation_value = days_to_units(user_input_number)
-print(calculation_value)
-
+if user_input.isdigit():
+    user_input_number = int(user_input)
+    calculation_value = days_to_units(user_input_number)
+    print(calculation_value)
+else:
+    print("Your inpurt is not valid number. Don't ruin my program")
 
  #Check data Type string, int, float:
 print(type("string check"))
