@@ -18,6 +18,16 @@ def validation_and_execute():
     except ValueError:
         print("Your inpurt is not valid number. Don't ruin my program")
 
-while True:
+# Never exit
+#while True:
+#    user_input = input("Hay user, enter a number of days and I will convert it to minutus \n")
+#    validation_and_execute()
+
+#  exit 
+user_input = ""
+while user_input != "exit":
     user_input = input("Hay user, enter a number of days and I will convert it to minutus \n")
-    validation_and_execute()
+    if user_input != "exit":
+      validation_and_execute()
+
+
