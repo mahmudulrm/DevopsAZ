@@ -20,8 +20,11 @@ def days_to_units(number_of_days):
 user_input = input("Enter number of days \n")
 if user_input.isdigit():
     user_input_number = int(user_input)
-    calculation_value = days_to_units(user_input_number)
-    print(calculation_value)
+    if user_input_number > 0:
+        calculation_value = days_to_units(user_input_number)
+        print(calculation_value)
+    elif user_input_number == 0:   
+        print("you enter a Zero value, so no conversion for you!")
 else:
     print("Your inpurt is not valid number. Don't ruin my program")
 
