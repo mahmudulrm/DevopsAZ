@@ -32,3 +32,4 @@ while user_input != "exit":
     if user_input != "exit":
       for number_of_days_element in user_input.split(","):
         validation_and_execute()
+        
