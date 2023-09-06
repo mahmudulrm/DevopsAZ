@@ -1,6 +1,10 @@
 #1 import helper
+#3 import helper as h
 #2 from helper import validation_and_execute, user_input_massages
 from helper import *
+
+import os
+
 #  exit 
 user_input = ""
 while user_input != "exit":
@@ -11,4 +15,6 @@ while user_input != "exit":
         days_and_unit_dictionary = {"days": days_and_unit[0], "unit": days_and_unit[1]}
         print(days_and_unit_dictionary)
         #1 helper.validation_and_execute(days_and_unit_dictionary)
+        #3 h.validation_and_execute(days_and_unit_dictionary)
         validation_and_execute(days_and_unit_dictionary)
+
