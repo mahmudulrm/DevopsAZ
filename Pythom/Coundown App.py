@@ -10,9 +10,8 @@ print(input_list)
 print(datetime.datetime.strptime(deadline, "%d.%m.%Y"))
 
 deadline_date = datetime.datetime.strptime(deadline, "%d.%m.%Y")
-
 today_date = datetime.datetime.today()
 
-print(today_date)
+time_till = deadline_date - today_date
 
-print(deadline_date - today_date)
+print(f"Dear user! Time remaing for your goal: {goal} is {time_till} days")
