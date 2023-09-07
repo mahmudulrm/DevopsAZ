@@ -17,8 +17,3 @@ class User:
         print(f"User: {self.name} Works as a: {self.current_job_title}. email: {self.email}")
 
 
-app_user_one = User("Mahmudul Hasan", "mahmudulrm@gmail.com", "pss123", "DevOps Engineer")
-app_user_one.get_user_info()
-
-app_user_one.change_job_title("IT")
-app_user_one.get_user_info()
