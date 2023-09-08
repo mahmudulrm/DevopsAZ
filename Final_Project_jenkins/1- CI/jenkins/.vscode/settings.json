@@ -1,0 +1,17 @@
+{
+    "jenkins-runner.jobs": {
+        "gitops_argocd_CI": {    
+            "isDefault": true,
+            "runWith": "host-no-password",
+            "name": "gitops_argocd_CI",
+        }
+    },
+    "jenkins-runner.hostConfigs": {
+        "host-with-password": {
+            "url": "http://jenkis_server_url:8090",
+            "user": "admin",
+            "password": "admin",
+            "useCrumbIssuer": true,
+        }
+    }
+}
