@@ -10,8 +10,10 @@
 3- CD
 	i. Argocd
 		a. deploy app
-		b. 
+		b. Docker - learn more
+		c. k8s  - learn more
 4- Monitoring
 	i. Argocd - promithius + grafana
 5- Re-deploy
-	i. 
+	i. Argocd git hook
+	ii. Argocd images updater 
