@@ -46,5 +46,42 @@ pipeline {
                 }
             }
         }
+        stages("Docker Image remove"){
+            steps{
+                script{
+                        sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                        sh "docker rmi ${IMAGE_NAME}:latest"
+                    }
+                }
+            }
+        }
+        stages("update image tag in deployment yml"){
+            steps{
+                script{
+                        sh """
+                        cat deployment.yml
+                        sed -i 's/${IMAGE_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yml
+                        cat deployment.yml
+                        """
+                    }
+                }
+            }
+        }
+                stages("git push change to git"){
+            steps{
+                script{
+                    sh """
+                      git config --global user.name "mahmudulrm"
+                      git config --global user.email "mahmudulrm@gmail.com"
+                      git add deployment.yml
+                      git commit -m "updated the deployment file"
+                    """
+                    withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                        
+                    sh "git push https://github.com/mahmudulrm/gitops_argocd_project.git main"
+                    }
+                }
+            }
+        }
     }
 }
