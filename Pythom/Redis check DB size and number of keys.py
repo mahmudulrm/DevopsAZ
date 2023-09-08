@@ -29,4 +29,3 @@ for server in servers:
     except redis.exceptions.ConnectionError:
         print(f"Cannot connect to {server['host']}:{server['port']}")
 
-w
