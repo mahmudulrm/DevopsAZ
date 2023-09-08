@@ -67,7 +67,7 @@ pipeline {
                 }
             }
         }
-                stages("git push change to git"){
+        stages("git push change to git"){
             steps{
                 script{
                     sh """
@@ -77,11 +77,25 @@ pipeline {
                       git commit -m "updated the deployment file"
                     """
                     withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                        
+                        // add personal tocken jenkins
                     sh "git push https://github.com/mahmudulrm/gitops_argocd_project.git main"
                     }
                 }
             }
         }
+    /*
+        stages("trigger config change pipeline"){
+            steps{
+                script{
+                    sh "curl -v -k -user jenkins_user:tocken -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' -data 'IMAGE_TAG=${IMAGE_TAG}' 'http://jenkins_url:8080/job/gitops-argocd_CD/buildWithParameters?token=gitops-config'"
+                    }
+                }
+            }
+        }
+*/
     }
 }
+
+// github webhook
+// jenkins api token create > click user_name > configure >  add new token
+// gitops-argocd_CD > Trigger builds remotely > gitops-config
