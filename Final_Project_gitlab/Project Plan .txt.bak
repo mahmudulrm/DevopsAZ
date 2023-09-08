@@ -1,0 +1,17 @@
+1- Infra
+	i. Tarraform 
+		a. VPC and EKS Cluster
+		b. Bastan Host
+		c. 
+	ii. Python 
+2- CI
+	i. Gitlab + Jenkins
+	ii. 
+3- CD
+	i. Argocd
+		a. deploy app
+		b. 
+4- Monitoring
+	i. Argocd - promithius + grafana
+5- Re-deploy
+	i. 
