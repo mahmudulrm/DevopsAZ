@@ -28,4 +28,3 @@ for server in servers:
             print(f"{server['host']}:{server['port']} is not a master node")
     except redis.exceptions.ConnectionError:
         print(f"Cannot connect to {server['host']}:{server['port']}")
-
