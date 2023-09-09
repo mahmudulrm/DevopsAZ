@@ -1,7 +1,7 @@
 pipeline {
     
     agent any
- /* environment{
+    environment{
         DOCKERHUB_USER = "mahmudulrm"
         APP_NAME = "gitops-argo-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
@@ -9,7 +9,7 @@ pipeline {
         REGISTRY_CREDS = 'dockerhub'
         // add - manage jenkins > credentials > system > global credentials - add credentials
         // git hub access personal token
-    }*/
+    }
     stages{
         stage('clean workspace'){
             steps{
@@ -18,9 +18,41 @@ pipeline {
                 }
             }
         }
-    }
-
-
-
-
+        stage("checkout SCM"){
+            steps{
+                script{
+                //Need to add jenkins credentialsId - github - git user and git personal token
+                    git credentialsId: 'github', url: 'https://github.com/mahmudulrm/gitops-jenkins-argocd.git', branch: 'main'
+                }
+            }
+        }
+		//plugins for docker (docker pipline, dashboard view) 
+        stage("Docker build Image"){
+            steps{
+                script{
+                    docker_image = docker.build "${IMAGE_NAME}"
+                }
+            }
+        }
+		// install docker on jenkins server
+        stage("Docker push Image"){
+            steps{
+                script{
+                    docker.withRegistry('', REGISTRY_CREDS){
+                        docker_image.push("$BUILD_NUMBER")
+                        docker_image.push('latest')
+                    }
+                }
+            }
+        }
+        stage("Docker Image remove"){
+            steps{
+                script{
+                    sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker rmi ${IMAGE_NAME}:latest"
+                }
+            }
+        }
+    }       
+        
 }
