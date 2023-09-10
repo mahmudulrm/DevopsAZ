@@ -5,50 +5,49 @@ pipeline {
         APP_NAME = "gitops-argo-app"
     }
     stages {
-        stages("Cleanup workspace"){
+        stage("Cleanup workspace"){
             steps{
                 script{
                     cleanWs()
                 }
             }
         }
-        stages("checkout SCM"){
+        stage("checkout SCM"){
             steps{
                 script{
-                    git credentialsId: 'github'
-                    url: https://github.com/vikash-kumar01/Jenkins-Docker-Project.git
-                    branch: main   
+                    git credentialsId: 'github', url: 'https://github.com/mahmudulrm/argocd.git', branch: 'main'  
                 }
             }
         }
-        stages("update image tag in deployment yml"){
+        // Trigger builds remotely = gitops-config + This project is parameterized = IMAGE_TAG
+
+        stage("update image tag in deployment yml"){
             steps{
                 script{
                         sh """
-                        cat deployment.yml
-                        sed -i 's/${IMAGE_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yml
-                        cat deployment.yml
+                        cat jenkins/deployment.yml
+                        
+                        sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' jenkins/deployment.yml
+                        cat jenkins/deployment.yml
                         """
                     }
                 }
         } 
-        stages("git push change to git"){
+        stage("git push change to git"){
             steps{
                 script{
                     sh """
                       git config --global user.name "mahmudulrm"
                       git config --global user.email "mahmudulrm@gmail.com"
-                      git add deployment.yml
+                      git add jenkins/deployment.yml
                       git commit -m "updated the deployment file"
                     """
                     withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
                         // add personal tocken jenkins
-                    sh "git push https://github.com/mahmudulrm/gitops_argocd_project.git main"
+                    sh "git push https://github.com/mahmudulrm/argocd.git main"
                     }
                 }
             }
         }
     }
 }
-
-// github webhook

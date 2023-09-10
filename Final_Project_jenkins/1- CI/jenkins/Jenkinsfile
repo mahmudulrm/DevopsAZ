@@ -53,6 +53,12 @@ pipeline {
                 }
             }
         }
-    }       
-        
+        stage("trigger config change pipeline"){
+            steps{
+                script{
+                    sh "curl -v -k -u mahmudul:111841aa6f3183fde3b5e4767c17d52519 -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' 'http://172.0.30.54:8080/job/gitops-argocd_CD/buildWithParameters?token=gitops-config' --data 'IMAGE_TAG=${IMAGE_TAG}' --data cause='Tigger by CI pipline'"
+                }
+            }
+        }
+    }              
 }
