@@ -1,3 +1,18 @@
 https://fluxcd.io/flux/installation/
 
 curl -s https://fluxcd.io/install.sh | sudo bash
+
+
+--------------
+
+export GITHUB_TOKEN=<gh-token>
+
+flux bootstrap github \
+  --token-auth \
+  --owner=my-github-username \
+  --repository=my-repository-name \
+  --branch=main \
+  --path=clusters/my-cluster \
+  --personal
+  
+  
