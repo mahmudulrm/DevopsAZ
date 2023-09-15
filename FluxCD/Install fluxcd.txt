@@ -16,3 +16,5 @@ flux bootstrap github \
   --personal
   
   
+  
+https://anaisurl.com/full-tutorial-getting-started-with-flux-cd/
